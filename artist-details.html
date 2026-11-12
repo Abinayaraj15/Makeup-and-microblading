@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Biography & Portfolio | AURA PMU Studio</title>
+  <meta name="description" content="Meet our master PMU practitioner: full biography, international certifications, working schedule, and client transformations.">
+  
+  <link rel="stylesheet" id="bootstrap-css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header-footer.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/rtl.css">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="pmu-topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-4">
+        <span class="pmu-topbar-item"><i class="fa-solid fa-location-dot"></i> 740 Madison Ave, New York</span>
+        <span class="pmu-topbar-item"><i class="fa-regular fa-clock"></i> Mon-Sat: 9:00 AM - 7:00 PM</span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a href="tel:+15552347890" class="pmu-topbar-item"><i class="fa-solid fa-phone"></i> +1 (555) 234-7890</a>
+        <button class="btn btn-sm text-white p-0 d-flex align-items-center gap-1" data-action="toggle-language" title="Toggle RTL/LTR">
+          <i class="fa-solid fa-globe text-gold"></i> <span class="lang-label">EN (LTR)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="pmu-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <a class="pmu-brand" href="index.html">
+          <div class="pmu-brand-icon">A</div>
+          <div class="pmu-brand-text">
+            <span class="pmu-brand-name">AURA</span>
+            <span class="pmu-brand-tagline">Permanent Makeup & Brows</span>
+          </div>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#pmuNavbar">
+          <i class="fa-solid fa-bars-staggered fs-3 text-gold"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="pmuNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Home</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="index.html"><i class="fa-solid fa-gem"></i> Home 1 - Luxury Studio</a></li>
+                <li><a class="dropdown-item" href="home-2.html"><i class="fa-solid fa-feather"></i> Home 2 - Eyebrow Specialist</a></li>
+                <li><a class="dropdown-item" href="home-3.html"><i class="fa-solid fa-heart"></i> Home 3 - Lip Blush & Tint</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Artists</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="artists.html"><i class="fa-solid fa-users"></i> Master Artists Team</a></li>
+                <li><a class="dropdown-item active" href="artist-details.html"><i class="fa-solid fa-id-card"></i> Artist Portfolio Details</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="aftercare.html">Aftercare</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="header-actions">
+            <button class="icon-control-btn" data-action="toggle-theme" title="Toggle Light/Dark Theme">
+              <i class="fa-solid fa-moon theme-toggle-icon"></i>
+            </button>
+            <div class="header-user-status">
+              <a href="login.html" class="icon-control-btn"><i class="fa-regular fa-user"></i></a>
+            </div>
+            <a href="booking.html" class="btn-pmu-gold">Book Appointment</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Artist Details Body -->
+  <section class="section-padding bg-main">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Left Column: Portrait & Stats -->
+        <div class="col-lg-5">
+          <div class="pmu-card p-3 p-md-4 text-center">
+            <div class="rounded-4 overflow-hidden border mb-4" style="height: 440px;">
+              <img id="artist-portrait" src="assets/images/artists/artist-1.jpg" alt="Master Artist" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h3 id="artist-name" class="font-serif mb-1">Elena Rostova</h3>
+            <p id="artist-role" class="text-gold fw-semibold mb-2">Founder & Master PMU Educator</p>
+            <div class="pmu-stars mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span id="artist-rating-text" class="ms-1 fw-bold text-main">5.0 (384 reviews)</span>
+            </div>
+            <div class="p-3 bg-subtle rounded-3 mb-4 text-start">
+              <small class="text-muted d-block mb-1">Studio Availability</small>
+              <div id="artist-availability-days" class="d-flex flex-wrap gap-1">
+                <span class="badge bg-gold text-dark">Monday</span>
+                <span class="badge bg-gold text-dark">Tuesday</span>
+                <span class="badge bg-gold text-dark">Wednesday</span>
+                <span class="badge bg-gold text-dark">Friday</span>
+              </div>
+            </div>
+            <a id="artist-book-btn" href="booking.html?artist=art-elena" class="btn-pmu-gold w-100 mb-2">
+              <i class="fa-regular fa-calendar-check me-2"></i> Book Directly With Elena
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Bio, Philosophy & Certifications -->
+        <div class="col-lg-7">
+          <span class="section-eyebrow">Master Practitioner Dossier</span>
+          <h2 class="font-serif mb-3">Biography & Philosophy</h2>
+          
+          <blockquote class="p-4 bg-subtle rounded-4 border-start border-4 border-warning font-serif fst-italic mb-4" id="artist-quote" style="border-color: var(--pmu-primary) !important;">
+            "Eyebrows are sisters, not twins — but in our studio, they are royalty."
+          </blockquote>
+
+          <p id="artist-bio-text" class="text-muted lead mb-4" style="font-size: 1.05rem;">
+            Elena has transformed over 6,500 pairs of brows over the past decade. Trained in Vienna, Munich, and Beverly Hills, she pioneered the Featherstroke 3D mapping method that harmonizes brow arching with individual cranial symmetry.
+          </p>
+
+          <h4 class="font-serif mb-3">Board Certifications & Honors</h4>
+          <ul id="artist-cert-list" class="list-unstyled mb-5">
+            <!-- Rendered dynamically -->
+          </ul>
+
+          <h4 class="font-serif mb-3">Specialty Treatments</h4>
+          <div id="artist-specialties-chips" class="d-flex flex-wrap gap-2 mb-5">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <h4 class="font-serif mb-3">Featured Portfolio Transformation</h4>
+          <div class="comparison-slider-wrapper mb-2">
+            <div class="comparison-slider">
+              <img class="img-after" src="assets/images/before-after/brow-sculpt-after.jpg" alt="After Transformation">
+              <div class="img-before-wrapper">
+                <img src="assets/images/before-after/brow-sparse-before.jpg" alt="Before Transformation">
+              </div>
+              <div class="comparison-handle"><i class="fa-solid fa-left-right"></i></div>
+              <span class="slider-label slider-label-before">Before</span>
+              <span class="slider-label slider-label-after">Healed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="pmu-footer">
+    <div class="container pmu-footer-top">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="pmu-brand mb-3">
+            <div class="pmu-brand-icon">A</div>
+            <div class="pmu-brand-text">
+              <span class="pmu-brand-name text-white">AURA</span>
+              <span class="pmu-brand-tagline">Permanent Makeup & Brows</span>
+            </div>
+          </div>
+          <p class="text-white-50 small mb-0">Manhattan's premier luxury permanent makeup atelier.</p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h5 class="pmu-footer-title">Artists</h5>
+          <ul class="pmu-footer-links">
+            <li><a href="artists.html">All Artists</a></li>
+            <li><a href="gallery.html">Portfolio</a></li>
+            <li><a href="aftercare.html">Aftercare</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h5 class="pmu-footer-title">Studio</h5>
+          <ul class="pmu-footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5 class="pmu-footer-title">Direct Booking</h5>
+          <p class="text-white-50 small mb-3">Reserve online with instant calendar confirmation.</p>
+          <a href="booking.html" class="btn btn-sm btn-pmu-gold">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+    <div class="pmu-footer-bottom text-center">
+      <div class="container">&copy; 2026 AURA Permanent Makeup & Microblading Studio.</div>
+    </div>
+  </footer>
+
+  <button class="btn-back-to-top" aria-label="Back to Top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/comparison-slider.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const artistId = urlParams.get('artist') || 'art-elena';
+      const artist = PMUStorage.getArtistById(artistId) || PMUStorage.getArtists()[0];
+
+      if (artist) {
+        document.title = `${artist.name} | AURA PMU Studio`;
+        document.getElementById('artist-portrait').src = artist.image;
+        document.getElementById('artist-name').textContent = artist.name;
+        document.getElementById('artist-role').textContent = artist.role;
+        document.getElementById('artist-rating-text').textContent = `${artist.rating} (${artist.reviewCount} reviews)`;
+        document.getElementById('artist-quote').textContent = `"${artist.quote}"`;
+        document.getElementById('artist-bio-text').textContent = artist.bio;
+        document.getElementById('artist-book-btn').href = `booking.html?artist=${artist.id}`;
+        document.getElementById('artist-book-btn').innerHTML = `<i class="fa-regular fa-calendar-check me-2"></i> Book With ${artist.name.split(' ')[0]}`;
+
+        // Certifications
+        const certList = document.getElementById('artist-cert-list');
+        certList.innerHTML = artist.certifications.map(c => `
+          <li class="mb-2 d-flex align-items-center gap-2">
+            <i class="fa-solid fa-award text-gold"></i>
+            <span class="text-muted">${c}</span>
+          </li>
+        `).join('');
+
+        // Specialties
+        const specList = document.getElementById('artist-specialties-chips');
+        specList.innerHTML = artist.specialties.map(s => `
+          <span class="pmu-badge pmu-badge-gold">${s}</span>
+        `).join('');
+
+        // Availability
+        const availList = document.getElementById('artist-availability-days');
+        availList.innerHTML = artist.availability.map(d => `
+          <span class="badge bg-gold text-dark">${d}</span>
+        `).join('');
+      }
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -150,41 +150,44 @@ header.sticky-top.scrolled,
   line-height: 1;
 }
 
-/* Desktop Navbar Alignment (992px+) */
+/* Desktop Navbar Alignment (992px+) - 3-track grid keeps nav links truly centered */
 @media (min-width: 992px) {
-  .navbar {
-    display: flex;
+  .pmu-header .navbar-expand-lg {
+    display: grid;
+    grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: nowrap;
-  }
-
-  .navbar-collapse {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-    flex-grow: 1;
     gap: 1rem;
   }
 
-  .navbar-nav {
+  .pmu-header .navbar-expand-lg .pmu-brand {
+    justify-self: start;
+  }
+
+  .pmu-header .navbar-expand-lg .navbar-collapse {
+    display: contents !important;
+  }
+
+  .pmu-header .navbar-expand-lg .navbar-nav {
+    justify-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto !important;
-    gap: 0.2rem;
+    margin: 0 !important;
+    gap: 0.15rem;
     flex-wrap: nowrap;
     list-style: none;
     padding-left: 0;
+    padding-right: 0;
   }
 
-  .header-actions {
+  .pmu-header .navbar-expand-lg .header-actions {
+    justify-self: end;
     display: flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.45rem;
     flex-shrink: 0;
     margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 
@@ -203,7 +206,7 @@ header.sticky-top.scrolled,
   font-weight: 500;
   font-size: 0.90rem;
   color: var(--pmu-text-main) !important;
-  padding: 0 0.65rem !important;
+  padding: 0 0.58rem !important;
   height: 38px;
   display: inline-flex;
   align-items: center;
@@ -224,8 +227,8 @@ header.sticky-top.scrolled,
   content: "";
   position: absolute;
   bottom: 2px;
-  left: 0.65rem;
-  right: 0.65rem;
+  left: 0.58rem;
+  right: 0.58rem;
   height: 2px;
   background: var(--pmu-gradient-gold);
   border-radius: 2px;
@@ -366,7 +369,7 @@ header.sticky-top.scrolled,
 .header-user-status .btn-pmu-outline {
   height: 38px;
   min-height: 38px;
-  padding: 0 0.95rem !important;
+  padding: 0 0.85rem !important;
   font-size: 0.86rem;
   font-weight: 500;
   border-radius: var(--pmu-radius-full) !important;
@@ -451,7 +454,7 @@ header.sticky-top.scrolled,
 .header-actions .btn-pmu-gold {
   height: 38px;
   min-height: 38px;
-  padding: 0 1.25rem !important;
+  padding: 0 1.05rem !important;
   font-size: 0.86rem;
   font-weight: 600;
   border-radius: var(--pmu-radius-full);
@@ -503,60 +506,151 @@ header.sticky-top.scrolled,
 @media (min-width: 992px) and (max-width: 1320px) {
   .pmu-header .container {
     max-width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
   }
 
-  .navbar {
-    gap: 0.5rem;
+  .pmu-header .navbar-expand-lg {
+    gap: 0.75rem;
+  }
+
+  .pmu-brand {
+    gap: 0.55rem;
+  }
+
+  .pmu-brand-logo,
+  .pmu-brand-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
   }
 
   .pmu-brand-name {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 
   .pmu-brand-tagline {
-    font-size: 0.58rem;
-    letter-spacing: 0.14em;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .pmu-header .navbar-expand-lg .navbar-nav {
+    gap: 0.08rem;
   }
 
   .navbar-nav .nav-link {
-    padding: 0 0.5rem !important;
-    font-size: 0.85rem;
-    height: 36px;
+    padding: 0 0.4rem !important;
+    font-size: 0.8rem;
+    height: 34px;
   }
 
   .navbar-nav .nav-link::after {
-    left: 0.5rem;
-    right: 0.5rem;
+    left: 0.4rem;
+    right: 0.4rem;
   }
 
-  .header-actions {
-    gap: 0.4rem;
+  .pmu-header .navbar-expand-lg .header-actions {
+    gap: 0.3rem;
   }
 
   .icon-control-btn {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    min-height: 36px;
-    font-size: 0.86rem;
+    width: 33px;
+    height: 33px;
+    min-width: 33px;
+    min-height: 33px;
+    font-size: 0.82rem;
   }
 
+  .btn-header-signin,
   .header-user-status .btn,
   .header-user-status .btn-pmu-outline {
-    height: 36px;
-    min-height: 36px;
-    padding: 0 0.7rem !important;
-    font-size: 0.82rem;
+    height: 33px;
+    min-height: 33px;
+    padding: 0 0.56rem !important;
+    font-size: 0.76rem;
+    gap: 0.3rem;
   }
 
+  .btn-header-cta,
   .header-actions .btn-pmu-gold {
-    height: 36px;
-    min-height: 36px;
-    padding: 0 0.95rem !important;
-    font-size: 0.82rem;
+    height: 33px;
+    min-height: 33px;
+    padding: 0 0.7rem !important;
+    font-size: 0.76rem;
+    gap: 0.3rem;
     white-space: nowrap !important;
+  }
+}
+
+/* Extra-compact navbar fit for 992px - 1140px (keeps 1024px menu links balanced & dead-center) */
+@media (min-width: 992px) and (max-width: 1140px) {
+  .pmu-header .navbar-expand-lg {
+    gap: 0.65rem;
+  }
+
+  .pmu-brand-tagline {
+    display: none;
+  }
+
+  .pmu-header .navbar-expand-lg .navbar-nav {
+    gap: 0.04rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0 0.36rem !important;
+    font-size: 0.78rem;
+  }
+
+  .navbar-nav .nav-link::after {
+    left: 0.36rem;
+    right: 0.36rem;
+  }
+
+  .pmu-header .navbar-expand-lg .header-actions {
+    gap: 0.25rem;
+  }
+
+  .icon-control-btn {
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+    min-height: 31px;
+    font-size: 0.78rem;
+  }
+
+  .btn-header-signin,
+  .header-user-status .btn,
+  .header-user-status .btn-pmu-outline,
+  .header-user-status .dropdown .btn-header-signin {
+    width: 31px !important;
+    min-width: 31px;
+    height: 31px;
+    min-height: 31px;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .header-user-status .btn img {
+    width: 23px;
+    height: 23px;
+  }
+
+  .header-user-status .dropdown .btn-header-signin::after {
+    display: none;
+  }
+
+  .btn-header-signin span {
+    display: none;
+  }
+
+  .btn-header-cta,
+  .header-actions .btn-pmu-gold {
+    height: 31px;
+    min-height: 31px;
+    padding: 0 0.62rem !important;
+    font-size: 0.74rem;
+    gap: 0.28rem;
   }
 }
 

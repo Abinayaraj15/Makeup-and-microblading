@@ -71,27 +71,43 @@ const PMUAuth = (function() {
     }, 800);
   }
 
+  const SOCIAL_PROVIDERS = {
+    google: {
+      label: 'Google Account',
+      email: 'sarah.jenkins@gmail.com'
+    },
+    apple: {
+      label: 'Apple ID',
+      email: 'sarah.jenkins@privaterelay.appleid.com'
+    },
+    facebook: {
+      label: 'Facebook Account',
+      email: 'sarah.jenkins@facebook.com'
+    }
+  };
+
   function loginWithProvider(provider) {
-    const providerNames = {
-      apple: 'Apple ID',
-      google: 'Google Account'
-    };
-    const providerLabel = providerNames[provider] || provider;
+    const providerConfig = SOCIAL_PROVIDERS[provider] || {};
+    const providerLabel = providerConfig.label || provider;
 
     if (window.PMUNotifications) {
       window.PMUNotifications.info(`Connecting securely via ${providerLabel}...`, 1800);
     }
 
-    const submitBtn = document.querySelector('#login-form button[type="submit"]');
-    if (submitBtn) {
-      submitBtn.disabled = true;
-    }
+    document
+      .querySelectorAll('[data-auth-provider], #login-form button[type="submit"], #register-form button[type="submit"]')
+      .forEach(btn => {
+        btn.disabled = true;
+      });
+
+    const params = new URLSearchParams(window.location.search);
+    const redirectUrl = params.get('redirect');
 
     setTimeout(() => {
       const ssoUser = {
         id: "usr-" + provider + "-" + Date.now().toString().slice(-4),
         name: "Sarah Jenkins",
-        email: provider === 'apple' ? "sarah.jenkins@privaterelay.appleid.com" : "sarah.jenkins@gmail.com",
+        email: providerConfig.email || `sarah.jenkins@${provider}.com`,
         role: "client",
         avatar: "assets/images/testimonials/client-1.jpg",
         phone: "+1 (555) 234-5678",
@@ -106,7 +122,7 @@ const PMUAuth = (function() {
       }
 
       setTimeout(() => {
-        window.location.href = 'client-dashboard.html';
+        window.location.href = redirectUrl || 'client-dashboard.html';
       }, 700);
     }, 900);
   }
@@ -246,23 +262,18 @@ const PMUAuth = (function() {
         });
       }
 
-      // Social Login Buttons
-      const appleBtn = document.getElementById('btn-auth-apple');
-      if (appleBtn) {
-        appleBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          loginWithProvider('apple');
-        });
-      }
-
-      const googleBtn = document.getElementById('btn-auth-google');
-      if (googleBtn) {
-        googleBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          loginWithProvider('google');
-        });
-      }
     }
+
+    // Social Sign-In / Sign-Up Buttons (Login & Register)
+    document.querySelectorAll('[data-auth-provider]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const provider = btn.dataset.authProvider;
+        if (provider) {
+          loginWithProvider(provider);
+        }
+      });
+    });
 
     // Register form
     const regForm = document.getElementById('register-form');

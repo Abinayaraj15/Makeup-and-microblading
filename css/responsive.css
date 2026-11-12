@@ -104,9 +104,9 @@
   .pmu-hero-home-3::before {
     background: linear-gradient(
       180deg,
-      rgba(251, 249, 246, 0.94) 0%,
-      rgba(251, 249, 246, 0.88) 50%,
-      rgba(251, 249, 246, 0.70) 100%
+      rgba(255, 255, 255, 0.54) 0%,
+      rgba(255, 255, 255, 0.36) 50%,
+      rgba(255, 255, 255, 0.18) 100%
     );
   }
 
@@ -115,9 +115,9 @@
   [data-theme="dark"] .pmu-hero-home-3::before {
     background: linear-gradient(
       180deg,
-      rgba(14, 15, 18, 0.94) 0%,
-      rgba(14, 15, 18, 0.88) 50%,
-      rgba(14, 15, 18, 0.70) 100%
+      rgba(14, 15, 18, 0.62) 0%,
+      rgba(14, 15, 18, 0.44) 50%,
+      rgba(14, 15, 18, 0.24) 100%
     );
   }
 }
@@ -244,3 +244,114 @@
   }
 }
 
+/* Responsive Decision Guide Comparison Matrix (< 768px down to 360px) */
+@media (max-width: 767.98px) {
+  .decision-matrix-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .decision-matrix-card .table-responsive {
+    overflow: visible !important;
+  }
+
+  .decision-matrix-table {
+    display: block;
+    width: 100%;
+  }
+
+  .decision-matrix-table thead {
+    display: none;
+  }
+
+  .decision-matrix-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .decision-matrix-table tbody tr {
+    display: block;
+    background-color: var(--pmu-bg-surface);
+    border: 1px solid var(--pmu-border);
+    border-radius: var(--pmu-radius-md);
+    padding: 0.9rem 1rem;
+    box-shadow: var(--pmu-shadow-sm);
+  }
+
+  .decision-matrix-table tbody tr:hover td,
+  .decision-matrix-table.table-hover > tbody > tr:hover > * {
+    --bs-table-bg-state: transparent;
+    background-color: transparent;
+  }
+
+  .decision-matrix-table tbody td {
+    display: grid;
+    grid-template-columns: minmax(82px, 34%) minmax(0, 1fr);
+    gap: 0.5rem;
+    align-items: baseline;
+    padding: 0.42rem 0 !important;
+    border-bottom: 1px dashed var(--pmu-border) !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    word-break: break-word;
+    background: transparent !important;
+  }
+
+  .decision-matrix-table tbody td:first-child {
+    display: block;
+    padding: 0 0 0.55rem 0 !important;
+    margin-bottom: 0.35rem;
+    border-bottom: 1px solid var(--pmu-border) !important;
+    font-size: 1.02rem;
+  }
+
+  .decision-matrix-table tbody td:first-child::before {
+    display: none;
+  }
+
+  .decision-matrix-table tbody td:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .decision-matrix-table tbody td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--pmu-primary-dark);
+  }
+
+  [data-theme="dark"] .decision-matrix-table tbody td::before {
+    color: var(--pmu-primary);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .btn-pmu-gold,
+  .btn-pmu-outline {
+    white-space: normal !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #aftercare-artists-team .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.13em;
+    gap: 0.38rem;
+  }
+
+  #aftercare-artists-team .section-eyebrow::before,
+  #aftercare-artists-team .section-eyebrow::after {
+    width: 14px;
+    flex-shrink: 0;
+  }
+}

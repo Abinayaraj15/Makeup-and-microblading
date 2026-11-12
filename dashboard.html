@@ -1,43 +1,539 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="alternate icon" href="assets/icons/favicon.svg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Dashboard | VELOURA PMU & Brow Studio</title>
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <title>Client Dashboard | VELOURA Brow &amp; PMU Studio</title>
+  <meta name="description" content="Private client dashboard for booking touch-up appointments, viewing protected before-and-after treatment history, and accessing aftercare instructions.">
+
   <link rel="stylesheet" id="bootstrap-css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="css/all.min.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css">
-  <script src="js/storage.js"></script>
-  <script>
-    (function() {
-      // Check authentication immediately before page render
-      var user = window.PMUStorage ? window.PMUStorage.getCurrentUser() : null;
-      if (user) {
-        if (user.role === 'admin') {
-          window.location.replace('client-dashboard.html');
-        } else {
-          window.location.replace('client-dashboard.html');
-        }
-      } else {
-        sessionStorage.setItem('pmu_auth_redirect_msg', 'Please sign in to access your customer dashboard.');
-        window.location.replace('login.html?redirect=client-dashboard.html');
-      }
-    })();
-  </script>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/header-footer.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/rtl.css">
 </head>
-<body style="background-color: var(--pmu-bg-main, #FAF8F4); color: var(--pmu-text-main, #201E1D); display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: var(--pmu-font-sans, sans-serif); text-align: center; margin: 0; padding: 1.5rem;">
-  <div class="pmu-card p-4 p-md-5 text-center shadow-sm" style="max-width: 440px; width: 100%;">
-    <img src="assets/icons/logo.svg" alt="VELOURA" width="48" height="48" class="mb-3 mx-auto">
-    <h3 class="font-serif mb-2" style="color: var(--pmu-primary, #D6BC91);">VELOURA</h3>
-    <p class="text-muted small mb-3">Connecting securely to your private customer lounge...</p>
-    <div class="spinner-border text-gold mb-3" role="status" style="color: #D6BC91;">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div>
-      <a href="client-dashboard.html" class="btn btn-sm btn-pmu-gold">Open Dashboard</a>
-    </div>
+<body>
+
+  <div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-header">
+        <a class="pmu-brand" href="index.html">
+          <div class="pmu-brand-logo"><img src="assets/icons/logo.svg" alt="VELOURA Logo" width="40" height="40"></div>
+          <div class="pmu-brand-text">
+            <span class="pmu-brand-name">VELOURA</span>
+            <span class="pmu-brand-tagline">Client Lounge</span>
+          </div>
+        </a>
+        <button type="button" class="btn btn-sm btn-outline-secondary d-lg-none" aria-label="Close Sidebar" onclick="document.getElementById('dashboardSidebar').classList.remove('show');">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-3 text-center border-bottom bg-subtle">
+        <img src="assets/images/testimonials/client-1.jpg" alt="Sarah Jenkins" class="rounded-circle mb-2 client-user-avatar" style="width: 60px; height: 60px; object-fit: cover;">
+        <h6 class="font-serif mb-0 client-user-name">Sarah Jenkins</h6>
+        <small class="text-muted d-block">Client Member #8041</small>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-heading">Client Lounge</li>
+        <li class="sidebar-item">
+          <a class="sidebar-link active" href="dashboard.html">
+            <i class="fa-solid fa-gauge"></i>
+            <span>Overview</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="#touchup-booking-section">
+            <i class="fa-regular fa-calendar-plus"></i>
+            <span>Book Touch-Up</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="#private-history-section">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Private Before &amp; After</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="#aftercare-instructions-section">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <span>Aftercare Instructions</span>
+          </a>
+        </li>
+        <li class="sidebar-heading">Records &amp; Care</li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="client-appointments.html">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>My Appointments</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="client-treatment-history.html">
+            <i class="fa-solid fa-notes-medical"></i>
+            <span>Clinical History</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="client-aftercare.html">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Daily Checklist</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="client-profile.html">
+            <i class="fa-regular fa-user"></i>
+            <span>Profile Settings</span>
+          </a>
+        </li>
+        <li class="sidebar-heading">Studio</li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="booking.html">
+            <i class="fa-solid fa-plus-circle text-gold"></i>
+            <span>Full Booking Engine</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="index.html">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Return to Studio Website</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer" id="sidebar-auth-action">
+        <a href="login.html?redirect=dashboard.html" class="btn btn-sm btn-pmu-gold w-100">
+          <i class="fa-solid fa-right-to-bracket me-2"></i> Sign In / Switch Account
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-main">
+      <!-- Topbar -->
+      <div class="dashboard-topbar">
+        <div class="d-flex align-items-center gap-2 gap-md-3">
+          <button type="button" class="btn btn-sm btn-outline-secondary d-lg-none" id="sidebarToggle" aria-label="Toggle Sidebar" onclick="document.getElementById('dashboardSidebar').classList.toggle('show');">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h5 class="mb-0 font-serif">Client Dashboard</h5>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 gap-md-3">
+          <button type="button" class="icon-control-btn" data-action="toggle-language" title="Toggle RTL/LTR (English / العربية)" aria-label="Toggle RTL/LTR">
+            <i class="fa-solid fa-right-left rtl-toggle-icon"></i>
+            <span class="lang-label visually-hidden">EN (LTR)</span>
+          </button>
+          <button type="button" class="icon-control-btn" data-action="toggle-theme" title="Toggle Theme" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon theme-toggle-icon"></i>
+          </button>
+          <div id="dashboard-account-action"></div>
+          <a href="#touchup-booking-section" class="btn btn-sm btn-pmu-gold">Book Touch-Up</a>
+        </div>
+      </div>
+
+      <!-- Dashboard Body -->
+      <div class="dashboard-content">
+        <!-- Next Appointment Countdown Banner -->
+        <div id="client-next-appointment-banner" class="pmu-card pmu-portal-banner p-4 mb-4 border">
+          <!-- Rendered dynamically by client-dashboard.js -->
+        </div>
+
+        <!-- Overview Metric Counters -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <div class="metric-card">
+              <div>
+                <span class="metric-label">Confirmed Appointments</span>
+                <div class="metric-value text-gold" id="client-metric-confirmed">1</div>
+              </div>
+              <div class="metric-icon-wrap"><i class="fa-regular fa-calendar-check"></i></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="metric-card">
+              <div>
+                <span class="metric-label">Completed Treatments</span>
+                <div class="metric-value" id="client-metric-completed">2</div>
+              </div>
+              <div class="metric-icon-wrap"><i class="fa-solid fa-award"></i></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="metric-card">
+              <div>
+                <span class="metric-label">Touch-Up Eligibility</span>
+                <div class="metric-value text-success" style="font-size: 1.35rem;">Eligible Now</div>
+              </div>
+              <div class="metric-icon-wrap"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Client Features: Touch-Up Booking & Aftercare Instructions -->
+        <div class="row g-4 mb-4">
+          <!-- Touch-Up Appointment Booking Card -->
+          <div class="col-12 col-xl-6" id="touchup-booking-section">
+            <div class="pmu-card p-4 h-100">
+              <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                <div>
+                  <span class="pmu-badge pmu-badge-gold mb-2">Touch-Up Concierge</span>
+                  <h5 class="font-serif mb-1">Book a Touch-Up Appointment</h5>
+                  <p class="text-muted small mb-0">Reserve your 6-week perfecting session or annual pigment refresh.</p>
+                </div>
+                <a href="booking.html?service=annual-touchup" class="small text-gold text-decoration-none fw-semibold">Full Wizard &rarr;</a>
+              </div>
+
+              <div id="touchup-booking-confirmation" class="alert alert-success d-none mb-3" role="alert"></div>
+
+              <form id="dashboard-touchup-form">
+                <div class="mb-3">
+                  <label class="form-label" for="touchup-service-select">Touch-Up Session Type *</label>
+                  <select id="touchup-service-select" class="form-select" required></select>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-7">
+                    <label class="form-label" for="touchup-artist-select">Master Artist</label>
+                    <select id="touchup-artist-select" class="form-select"></select>
+                  </div>
+                  <div class="col-12 col-md-5">
+                    <label class="form-label" for="touchup-date-input">Preferred Date *</label>
+                    <input type="date" id="touchup-date-input" class="form-control" required>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label d-block">Select Available Time Slot *</label>
+                  <div class="time-slot-grid">
+                    <button type="button" class="time-slot-btn touchup-time-slot" data-time="09:30 AM">09:30 AM</button>
+                    <button type="button" class="time-slot-btn touchup-time-slot selected" data-time="11:00 AM">11:00 AM</button>
+                    <button type="button" class="time-slot-btn touchup-time-slot" data-time="01:00 PM">01:00 PM</button>
+                    <button type="button" class="time-slot-btn touchup-time-slot" data-time="02:30 PM">02:30 PM</button>
+                    <button type="button" class="time-slot-btn touchup-time-slot" data-time="04:00 PM">04:00 PM</button>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label" for="touchup-notes">Artist Focus Notes (Optional)</label>
+                  <input type="text" id="touchup-notes" class="form-control" placeholder="e.g., Refine left arch density or warm shade slightly">
+                </div>
+
+                <div class="p-3 bg-subtle rounded-3 border mb-3 d-flex flex-wrap justify-content-between align-items-center gap-2 small">
+                  <div>
+                    <span class="text-muted">Duration:</span>
+                    <strong class="text-main" id="touchup-duration-display">60 mins</strong>
+                  </div>
+                  <div>
+                    <span class="text-muted">Session Total:</span>
+                    <strong class="text-main" id="touchup-price-display">$150</strong>
+                  </div>
+                  <div>
+                    <span class="text-muted">25% Retainer:</span>
+                    <strong class="text-gold" id="touchup-deposit-display">$38</strong>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-pmu-gold w-100">
+                  <span>Confirm Touch-Up Appointment</span>
+                  <i class="fa-regular fa-calendar-check"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Aftercare Instructions & Recovery Tracker Card -->
+          <div class="col-12 col-xl-6" id="aftercare-instructions-section">
+            <div class="pmu-card p-4 h-100">
+              <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                <div>
+                  <span class="healing-stage-badge mb-2"><i class="fa-solid fa-clock-rotate-left"></i> Recovery Stage: Day 7 of 14</span>
+                  <h5 class="font-serif mb-1">Aftercare Instructions &amp; Checklist</h5>
+                  <p class="text-muted small mb-0">Follow your daily protocol for crisp healed pigment retention.</p>
+                </div>
+                <div class="text-end">
+                  <span class="small text-muted d-block">Today's Care</span>
+                  <span class="fs-5 font-serif fw-bold text-gold" id="daily-care-progress">50%</span>
+                </div>
+              </div>
+
+              <div class="healing-progress-bar mt-2 mb-3">
+                <div class="healing-progress-fill" id="daily-care-progress-bar" style="width: 50%;"></div>
+              </div>
+
+              <!-- Aftercare Tabs -->
+              <ul class="nav nav-pills flex-wrap gap-1 gap-sm-2 mb-3" id="aftercareTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="tab-checklist-btn" data-bs-toggle="pill" data-bs-target="#aftercare-tab-checklist" type="button" role="tab" aria-selected="true">Daily Checklist</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tab-brows-btn" data-bs-toggle="pill" data-bs-target="#aftercare-tab-brows" type="button" role="tab" aria-selected="false">Brow Care</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tab-lips-btn" data-bs-toggle="pill" data-bs-target="#aftercare-tab-lips" type="button" role="tab" aria-selected="false">Lip Blush</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tab-dos-btn" data-bs-toggle="pill" data-bs-target="#aftercare-tab-dos" type="button" role="tab" aria-selected="false">Do's &amp; Don'ts</button>
+                </li>
+              </ul>
+
+              <div class="tab-content flex-grow-1" id="aftercareTabsContent">
+                <!-- Tab 1: Daily Checklist -->
+                <div class="tab-pane fade show active" id="aftercare-tab-checklist" role="tabpanel" aria-labelledby="tab-checklist-btn">
+                  <div class="list-group list-group-flush border rounded-3 p-2 bg-subtle mb-3">
+                    <label class="list-group-item d-flex align-items-start gap-3 border-0 bg-transparent px-2 py-2 small">
+                      <input class="form-check-input healing-task-check mt-1 flex-shrink-0" type="checkbox" checked>
+                      <span>Morning gentle blot-cleanse with lukewarm sterile water (pat dry with clean lint-free tissue)</span>
+                    </label>
+                    <label class="list-group-item d-flex align-items-start gap-3 border-0 bg-transparent px-2 py-2 small">
+                      <input class="form-check-input healing-task-check mt-1 flex-shrink-0" type="checkbox" checked>
+                      <span>Apply a rice-grain amount of VELOURA Botanical Healing Balm across treated brows</span>
+                    </label>
+                    <label class="list-group-item d-flex align-items-start gap-3 border-0 bg-transparent px-2 py-2 small">
+                      <input class="form-check-input healing-task-check mt-1 flex-shrink-0" type="checkbox">
+                      <span>Keep area protected from direct steam, heavy gym sweat, and UV exposure today</span>
+                    </label>
+                    <label class="list-group-item d-flex align-items-start gap-3 border-0 bg-transparent px-2 py-2 small">
+                      <input class="form-check-input healing-task-check mt-1 flex-shrink-0" type="checkbox">
+                      <span>Evening cleanse &amp; thin healing balm re-application before sleeping on a fresh pillowcase</span>
+                    </label>
+                  </div>
+                  <div class="alert alert-warning mb-0 small">
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                    <strong>Day 7 Flaking Notice:</strong> Let peeling flakes shed naturally. Picking removes implanted pigment.
+                  </div>
+                </div>
+
+                <!-- Tab 2: Brow Care -->
+                <div class="tab-pane fade" id="aftercare-tab-brows" role="tabpanel" aria-labelledby="tab-brows-btn">
+                  <ul class="dashboard-aftercare-list">
+                    <li><i class="fa-solid fa-droplet text-gold mt-1"></i><div><strong class="text-main">Days 1–2 (Lymphatic Blot):</strong> Gently blot excess lymph fluid every 2 hours on Day 1 using damp sterile cotton. Wash lightly morning and night.</div></li>
+                    <li><i class="fa-solid fa-hand-holding-heart text-gold mt-1"></i><div><strong class="text-main">Days 3–7 (Thin Balm Layer):</strong> Apply half a rice-grain size of healing balm twice daily. Brows may appear darker and begin light flaking around Day 5.</div></li>
+                    <li><i class="fa-solid fa-sun text-gold mt-1"></i><div><strong class="text-main">Days 8–14 (Ghost Phase &amp; Settling):</strong> Pigment temporarily softens beneath regenerating skin before blooming back evenly by Week 4–6.</div></li>
+                  </ul>
+                </div>
+
+                <!-- Tab 3: Lip Blush -->
+                <div class="tab-pane fade" id="aftercare-tab-lips" role="tabpanel" aria-labelledby="tab-lips-btn">
+                  <ul class="dashboard-aftercare-list">
+                    <li><i class="fa-solid fa-circle-check text-gold mt-1"></i><div><strong class="text-main">Days 1–3 (Hydration &amp; Straw):</strong> Drink cool beverages through a straw and keep lips coated with sterile botanical ointment every 1–2 hours.</div></li>
+                    <li><i class="fa-solid fa-circle-check text-gold mt-1"></i><div><strong class="text-main">Days 4–7 (Gentle Shedding):</strong> Lips will lightly peel—never bite or peel dry skin. Avoid spicy, acidic, or very hot foods until shedding completes.</div></li>
+                    <li><i class="fa-solid fa-circle-check text-gold mt-1"></i><div><strong class="text-main">Days 8–10 (Color Bloom):</strong> Tone softens by 30–40% before stabilizing into a natural velvety tint; apply SPF lip balm outdoors.</div></li>
+                  </ul>
+                </div>
+
+                <!-- Tab 4: Do's & Don'ts -->
+                <div class="tab-pane fade" id="aftercare-tab-dos" role="tabpanel" aria-labelledby="tab-dos-btn">
+                  <div class="row g-3">
+                    <div class="col-sm-6">
+                      <div class="p-3 bg-subtle rounded-3 border h-100">
+                        <h6 class="font-serif text-success mb-2 small fw-bold"><i class="fa-solid fa-check me-1"></i> Essential Do's</h6>
+                        <ul class="small text-muted ps-3 mb-0">
+                          <li class="mb-1">Pat treated area dry gently</li>
+                          <li class="mb-1">Sleep on a clean silk/cotton pillow</li>
+                          <li>Apply SPF 50+ once fully healed</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="p-3 bg-subtle rounded-3 border h-100">
+                        <h6 class="font-serif text-danger mb-2 small fw-bold"><i class="fa-solid fa-ban me-1"></i> Strict Don'ts (10 Days)</h6>
+                        <ul class="small text-muted ps-3 mb-0">
+                          <li class="mb-1">No picking or scratching scabs</li>
+                          <li class="mb-1">No sauna, pools, or heavy sweat</li>
+                          <li>No retinol, AHA/BHA, or brow makeup</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-3 mt-3 border-top">
+                <a href="tel:+15552347890" class="small text-danger text-decoration-none fw-semibold"><i class="fa-solid fa-phone me-1"></i> Priority Healing Desk</a>
+                <div class="d-flex gap-2">
+                  <a href="client-aftercare.html" class="btn btn-sm btn-pmu-outline">Full Checklist</a>
+                  <a href="aftercare.html" class="btn btn-sm btn-pmu-gold">Complete Guide</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Private Before & After Treatment History Vault -->
+        <section class="pmu-card p-4 mb-4" id="private-history-section">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div>
+              <span class="pmu-badge pmu-badge-success mb-2"><i class="fa-solid fa-shield-halved me-1"></i> HIPAA Protected • Private Client Vault</span>
+              <h5 class="font-serif mb-1">Private Before &amp; After History</h5>
+              <p class="text-muted small mb-0">Privately inspect your pre-procedure baseline and healed results with clinical pigment logs.</p>
+            </div>
+
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <div class="pmu-tabs" role="group" aria-label="Filter private history">
+                <button type="button" class="pmu-tab-item vault-filter-btn active" data-filter="all">All</button>
+                <button type="button" class="pmu-tab-item vault-filter-btn" data-filter="brows">Brows</button>
+                <button type="button" class="pmu-tab-item vault-filter-btn" data-filter="lips">Lips</button>
+              </div>
+              <button type="button" id="toggle-private-photos-btn" class="btn btn-sm btn-pmu-gold">
+                <i class="fa-solid fa-eye me-1"></i> Reveal Private Photos
+              </button>
+            </div>
+          </div>
+
+          <div class="row g-4" id="private-history-grid">
+            <!-- Rendered dynamically by client-dashboard.js -->
+          </div>
+        </section>
+
+        <!-- Recent Appointments Table -->
+        <div class="pmu-card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="font-serif mb-0">Recent Appointments</h5>
+            <a href="client-appointments.html" class="small text-gold text-decoration-none">View All &rarr;</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Ref ID</th>
+                  <th>Treatment</th>
+                  <th>Artist</th>
+                  <th>Date &amp; Time</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="client-appointments-table-body">
+                <!-- Rendered dynamically by client-dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standardized Studio Footer -->
+      <footer class="pmu-footer">
+        <div class="container pmu-footer-top">
+          <div class="row g-5">
+            <!-- Col 1: Brand & Atelier Story -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="pmu-brand mb-3">
+                <div class="pmu-brand-logo"><img src="assets/icons/logo.svg" alt="VELOURA Logo" width="40" height="40"></div>
+                <div class="pmu-brand-text">
+                  <span class="pmu-brand-name text-white">VELOURA</span>
+                  <span class="pmu-brand-tagline">Permanent Makeup &amp; Brows</span>
+                </div>
+              </div>
+              <p class="text-white-50 small mb-4">
+                Manhattan's premier destination for bespoke semi-permanent cosmetic tattooing. Emphasizing subtle enhancement, clinical precision, and golden ratio harmony.
+              </p>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="footer-badge-item"><i class="fa-solid fa-award"></i> PhiAcademy Grand Master</span>
+                <span class="footer-badge-item"><i class="fa-solid fa-shield-virus"></i> OSHA Certified</span>
+              </div>
+              <div class="pmu-footer-social">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="TikTok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Pinterest" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://wa.me/15552347890" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+              </div>
+            </div>
+
+            <!-- Col 2: Treatments -->
+            <div class="col-6 col-md-6 col-lg-2">
+              <h5 class="pmu-footer-title">Treatments</h5>
+              <ul class="pmu-footer-links">
+                <li><a href="service-details.html?service=microblading">Microblading</a></li>
+                <li><a href="service-details.html?service=powder-brows">Ombré Powder Brows</a></li>
+                <li><a href="service-details.html?service=combo-brows">Combination Brows</a></li>
+                <li><a href="service-details.html?service=nano-brows">Digital Nano Brows</a></li>
+                <li><a href="service-details.html?service=lip-blush">Velvet Lip Blush</a></li>
+                <li><a href="service-details.html?service=annual-touchup">Annual Touch-Up</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 3: Studio -->
+            <div class="col-6 col-md-6 col-lg-2">
+              <h5 class="pmu-footer-title">Studio</h5>
+              <ul class="pmu-footer-links">
+                <li><a href="about.html">About Studio</a></li>
+                <li><a href="artists.html">Master Artists</a></li>
+                <li><a href="aftercare.html">Aftercare Guide</a></li>
+                <li><a href="consultation.html">Consultation</a></li>
+                <li><a href="contact.html">Studio Location</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 4: Studio Concierge -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <h5 class="pmu-footer-title">Studio Concierge</h5>
+              <div class="pmu-footer-contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>740 Madison Avenue, 4th Floor, New York, NY 10065</span>
+              </div>
+              <div class="pmu-footer-contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <span><a href="tel:+15552347890" class="text-white-50 text-decoration-none">+1 (555) 234-7890</a></span>
+              </div>
+              <div class="pmu-footer-contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <span><a href="mailto:concierge@velourastudio.com" class="text-white-50 text-decoration-none">concierge@velourastudio.com</a></span>
+              </div>
+
+              <div class="pmu-newsletter-box">
+                <form class="w-100 d-flex position-relative footer-newsletter-form" novalidate>
+                  <input type="email" class="form-control footer-newsletter-input" placeholder="VIP beauty updates &amp; discounts..." required aria-label="VIP beauty updates &amp; discounts email">
+                  <button type="submit" aria-label="Subscribe to newsletter"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+                <div class="footer-newsletter-feedback small mt-2" style="display: none;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="pmu-footer-bottom">
+          <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div class="text-white-50 small">
+              &copy; 2026 VELOURA Permanent Makeup &amp; Brow Studio. All Rights Reserved.
+            </div>
+            <div class="d-flex flex-wrap gap-3 small">
+              <a href="#" class="text-white-50 text-decoration-none footer-legal-link" data-bs-toggle="modal" data-bs-target="#modalPrivacyPolicy">Privacy Policy</a>
+              <a href="#" class="text-white-50 text-decoration-none footer-legal-link" data-bs-toggle="modal" data-bs-target="#modalTermsTreatment">Terms of Treatment</a>
+              <a href="client-dashboard.html" class="text-gold text-decoration-none">Client Lounge</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Back to Top Button -->
+      <button type="button" class="btn-back-to-top" aria-label="Back to Top"><i class="fa-solid fa-chevron-up"></i></button>
+    </main>
   </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/comparison-slider.js"></script>
+  <script src="js/client-dashboard.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/footer.js"></script>
 </body>
 </html>

@@ -60,30 +60,29 @@
   --pmu-info: #60a5fa;
   --pmu-info-bg: rgba(59, 130, 246, 0.16);
 
-  /* Banner Overlay & Contrast Tokens (Dark Mode - Controlled rich dark tint preserving details) */
+  /* Banner Overlay & Contrast Tokens (Dark Mode - Controlled dark overlay preserving image clarity & contrast) */
   --pmu-banner-overlay: linear-gradient(
     180deg,
-    rgba(14, 15, 18, 0.58) 0%,
-    rgba(14, 15, 18, 0.38) 35%,
-    rgba(14, 15, 18, 0.45) 70%,
-    rgba(14, 15, 18, 0.65) 100%
+    rgba(14, 15, 18, 0.54) 0%,
+    rgba(14, 15, 18, 0.34) 45%,
+    rgba(14, 15, 18, 0.58) 100%
   );
   --pmu-hero-overlay: linear-gradient(
     180deg,
-    rgba(14, 15, 18, 0.88) 0%,
-    rgba(14, 15, 18, 0.76) 45%,
-    rgba(14, 15, 18, 0.92) 100%
+    rgba(14, 15, 18, 0.58) 0%,
+    rgba(14, 15, 18, 0.38) 45%,
+    rgba(14, 15, 18, 0.62) 100%
   );
   --pmu-portal-overlay: linear-gradient(
     135deg,
-    rgba(14, 15, 18, 0.60) 0%,
-    rgba(14, 15, 18, 0.38) 50%,
-    rgba(14, 15, 18, 0.65) 100%
+    rgba(14, 15, 18, 0.46) 0%,
+    rgba(14, 15, 18, 0.28) 50%,
+    rgba(14, 15, 18, 0.50) 100%
   );
   --pmu-portal-banner-overlay: linear-gradient(
     135deg,
-    rgba(22, 23, 28, 0.68) 0%,
-    rgba(16, 17, 21, 0.48) 100%
+    rgba(14, 15, 18, 0.62) 0%,
+    rgba(14, 15, 18, 0.42) 100%
   );
   --pmu-gradient-gold-text: linear-gradient(135deg, #fcedd8 0%, #e2caa3 35%, #c5a880 70%, #f7e8d0 100%);
   --pmu-banner-title-color: #ffffff;
@@ -351,7 +350,7 @@ body, .theme-transition,
 [data-theme="dark"] .btn-pmu-gold {
   background: var(--pmu-gradient-gold) !important;
   color: #1a1b1f !important;
-  border: none !important;
+  border: 1.5px solid transparent !important;
   box-shadow: 0 4px 16px rgba(223, 202, 167, 0.35) !important;
 }
 
@@ -1005,6 +1004,11 @@ body, .theme-transition,
   color: var(--pmu-primary) !important;
 }
 
+[data-theme="dark"] .pmu-page-banner .pmu-tab-item.active {
+  background: var(--pmu-gradient-gold) !important;
+  color: #1a1b1f !important;
+}
+
 [data-theme="dark"] .pmu-stat-box {
   background-color: var(--pmu-bg-surface) !important;
   border-color: var(--pmu-border) !important;
@@ -1046,6 +1050,19 @@ body, .theme-transition,
   background-color: rgba(197, 168, 128, 0.1) !important;
 }
 
+[data-theme="dark"] .pmu-social-icon-btn {
+  background-color: var(--pmu-bg-subtle) !important;
+  border-color: var(--pmu-border) !important;
+  color: var(--pmu-text-main) !important;
+}
+
+[data-theme="dark"] .pmu-social-icon-btn:hover:not(:disabled) {
+  border-color: var(--pmu-primary) !important;
+  background-color: rgba(223, 202, 167, 0.14) !important;
+  color: var(--pmu-primary) !important;
+  box-shadow: 0 6px 18px rgba(223, 202, 167, 0.22) !important;
+}
+
 [data-theme="dark"] .btn-toggle-password {
   color: var(--pmu-text-muted) !important;
 }
@@ -1056,4 +1073,24 @@ body, .theme-transition,
 
 [data-theme="dark"] .btn-toggle-password i {
   color: inherit !important;
+}
+
+/* Dashboard Private Vault & Demo Banner (Dark Mode) */
+[data-theme="dark"] .private-ba-card {
+  background-color: var(--pmu-bg-surface) !important;
+  border-color: var(--pmu-border) !important;
+}
+
+[data-theme="dark"] .private-ba-specs {
+  background-color: var(--pmu-bg-subtle) !important;
+  border-color: var(--pmu-border) !important;
+}
+
+[data-theme="dark"] .dashboard-demo-banner {
+  background: linear-gradient(135deg, rgba(223, 202, 167, 0.14) 0%, rgba(24, 25, 30, 0.95) 100%) !important;
+  border-color: rgba(223, 202, 167, 0.35) !important;
+}
+
+[data-theme="dark"] .dashboard-content .pmu-portal-banner::before {
+  background: linear-gradient(90deg, rgba(14, 15, 18, 0.78) 0%, rgba(14, 15, 18, 0.52) 52%, rgba(14, 15, 18, 0.20) 100%) !important;
 }

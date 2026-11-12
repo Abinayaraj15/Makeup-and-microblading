@@ -4,13 +4,52 @@
 
 const PMUValidation = (function() {
   function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
+    const trimmed = String(email || '').trim();
+    if (!trimmed || trimmed.length > 254 || trimmed.includes('..')) return false;
+    const parts = trimmed.split('@');
+    if (parts.length !== 2) return false;
+    const [local, domain] = parts;
+    if (!local || local.length > 64 || local.startsWith('.') || local.endsWith('.')) return false;
+    if (!/^[a-zA-Z0-9._%+-]+$/.test(local)) return false;
+    const labels = domain.split('.');
+    if (labels.length < 2) return false;
+    const tld = labels[labels.length - 1];
+    if (!/^[a-zA-Z]{2,}$/.test(tld)) return false;
+    return labels.every(label => /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/.test(label));
   }
 
   function validatePhone(phone) {
-    const cleaned = String(phone).replace(/[^\d+]/g, '');
-    return cleaned.length >= 7;
+    const trimmed = String(phone || '').trim();
+    if (!trimmed || !/^\+?[\d\s\-().]+$/.test(trimmed)) return false;
+    const openParens = (trimmed.match(/\(/g) || []).length;
+    const closeParens = (trimmed.match(/\)/g) || []).length;
+    if (openParens !== closeParens) return false;
+    const digits = trimmed.replace(/\D/g, '');
+    if (digits.length < 10 || digits.length > 15) return false;
+    if (/^(\d)\1+$/.test(digits)) return false;
+    return true;
+  }
+
+  function validatePassword(password, options = {}) {
+    const minLength = options.minLength || 6;
+    const maxLength = options.maxLength || 64;
+    const str = typeof password === 'string' ? password : String(password || '');
+    if (!str) {
+      return { valid: false, message: 'Password is required.' };
+    }
+    if (/\s/.test(str)) {
+      return { valid: false, message: 'Password cannot contain spaces.' };
+    }
+    if (str.length < minLength) {
+      return { valid: false, message: `Password must be at least ${minLength} characters.` };
+    }
+    if (str.length > maxLength) {
+      return { valid: false, message: `Password cannot exceed ${maxLength} characters.` };
+    }
+    if (/^(.)\1+$/.test(str)) {
+      return { valid: false, message: 'Password cannot consist of a single repeated character.' };
+    }
+    return { valid: true, message: '' };
   }
 
   function validateName(name) {
@@ -61,7 +100,7 @@ const PMUValidation = (function() {
       // Check email
       if (input.type === 'email' && input.value.trim()) {
         if (!validateEmail(input.value)) {
-          showError(input, 'Please enter a valid email address.');
+          showError(input, 'Please enter a valid email address (e.g., name@domain.com).');
           isValid = false;
         }
       }
@@ -69,15 +108,18 @@ const PMUValidation = (function() {
       // Check phone
       if (input.type === 'tel' && input.value.trim()) {
         if (!validatePhone(input.value)) {
-          showError(input, 'Please enter a valid telephone number.');
+          showError(input, 'Please enter a valid phone number (10-15 digits, e.g., +1 (555) 234-5678).');
           isValid = false;
         }
       }
 
-      // Check password min length
-      if ((input.type === 'password' || (input.id && input.id.toLowerCase().includes('password'))) && input.value && input.minLength) {
-        if (input.value.length < input.minLength) {
-          showError(input, `Password must be at least ${input.minLength} characters.`);
+      // Check password rules
+      if ((input.type === 'password' || (input.id && input.id.toLowerCase().includes('password'))) && input.value) {
+        const minLen = (input.minLength && input.minLength > 0) ? input.minLength : 6;
+        const maxLen = (input.maxLength && input.maxLength > 0) ? input.maxLength : 64;
+        const pwdCheck = validatePassword(input.value, { minLength: minLen, maxLength: maxLen });
+        if (!pwdCheck.valid) {
+          showError(input, pwdCheck.message);
           isValid = false;
         }
       }
@@ -110,6 +152,7 @@ const PMUValidation = (function() {
     validateName,
     validateEmail,
     validatePhone,
+    validatePassword,
     showError,
     clearErrors
   };

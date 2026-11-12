@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/forms.css">
   <link rel="stylesheet" href="css/header-footer.css">
   <link rel="stylesheet" href="css/themes.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -123,31 +124,32 @@
             <div class="pmu-card p-4">
               <h5 class="font-serif mb-4">Personal Contact Information</h5>
               
-              <form id="client-profile-form" onsubmit="event.preventDefault(); PMUNotifications.success('Profile settings updated successfully!');">
+              <form id="client-profile-form" novalidate>
                 <div class="row g-3 mb-4">
                   <div class="col-md-6">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="form-control" value="Sarah Jenkins">
+                    <label class="form-label" for="profile-full-name">Full Name</label>
+                    <input type="text" id="profile-full-name" class="form-control" value="Sarah Jenkins" required>
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" class="form-control" value="sarah.jenkins@example.com" readonly>
+                    <label class="form-label" for="profile-email">Email Address</label>
+                    <input type="email" id="profile-email" class="form-control" value="sarah.jenkins@example.com" autocomplete="email" required>
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label">Phone Number</label>
-                    <input type="tel" class="form-control" value="+1 (555) 234-5678">
+                    <label class="form-label" for="profile-phone">Phone Number</label>
+                    <input type="tel" id="profile-phone" class="form-control" value="+1 (555) 234-5678" autocomplete="tel" required>
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label">Emergency Contact</label>
-                    <input type="tel" class="form-control" value="+1 (555) 987-6543">
+                    <label class="form-label" for="profile-emergency">Emergency Contact</label>
+                    <input type="tel" id="profile-emergency" class="form-control" value="+1 (555) 987-6543" autocomplete="tel">
                   </div>
                   <div class="col-12">
-                    <label class="form-label">Skin Undertone / Sensitivity Notes</label>
-                    <input type="text" class="form-control" value="Fitzpatrick II - T-zone combination, sensitive to glycolic acid">
+                    <label class="form-label" for="profile-skin-notes">Skin Undertone / Sensitivity Notes</label>
+                    <input type="text" id="profile-skin-notes" class="form-control" value="Fitzpatrick II - T-zone combination, sensitive to glycolic acid">
                   </div>
                 </div>
 
-                <button type="submit" class="btn btn-pmu-gold">Save Changes</button>
+                <button type="submit" id="save-profile-btn" class="btn btn-pmu-gold">Save Changes</button>
+                <div id="profile-save-feedback" class="d-none" role="status"></div>
               </form>
             </div>
           </div>
@@ -174,16 +176,29 @@
             <!-- Change Password -->
             <div class="pmu-card p-4">
               <h5 class="font-serif mb-3">Change Password</h5>
-              <form onsubmit="event.preventDefault(); PMUNotifications.success('Password changed successfully.'); this.reset();">
+              <form id="client-password-form" novalidate>
                 <div class="mb-3">
-                  <label class="form-label">Current Password</label>
-                  <input type="password" class="form-control" placeholder="••••••••" required>
+                  <label class="form-label" for="current-password">Current Password</label>
+                  <div class="position-relative">
+                    <input type="password" id="current-password" class="form-control pe-5" placeholder="Enter current password" minlength="6" maxlength="64" autocomplete="current-password" required>
+                    <button type="button" class="btn-toggle-password" data-toggle-target="current-password" aria-label="Show password" title="Show password">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </div>
+                  <div id="current-password-error" class="text-danger small mt-1 d-none"></div>
                 </div>
                 <div class="mb-3">
-                  <label class="form-label">New Password</label>
-                  <input type="password" class="form-control" placeholder="••••••••" minlength="6" required>
+                  <label class="form-label" for="new-password">New Password</label>
+                  <div class="position-relative">
+                    <input type="password" id="new-password" class="form-control pe-5" placeholder="6-64 characters, no spaces" minlength="6" maxlength="64" autocomplete="new-password" required>
+                    <button type="button" class="btn-toggle-password" data-toggle-target="new-password" aria-label="Show password" title="Show password">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </div>
+                  <div id="new-password-error" class="text-danger small mt-1 d-none"></div>
                 </div>
-                <button type="submit" class="btn btn-sm btn-pmu-outline w-100">Update Password</button>
+                <button type="submit" id="update-password-btn" class="btn btn-pmu-gold w-100">Update Password</button>
+                <div id="password-update-feedback" class="d-none" role="status"></div>
               </form>
             </div>
           </div>
@@ -297,6 +312,8 @@
   <script src="js/theme.js"></script>
   <script src="js/language.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/client-profile.js"></script>
   <script src="js/footer.js"></script>
 </body>
 </html>

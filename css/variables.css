@@ -76,37 +76,37 @@
   --pmu-header-height: 70px;
   --pmu-topbar-height: 0px;
 
-  /* Banner Overlay & Contrast Tokens (Light Mode - Warm Ivory luminous tint) */
+  /* Banner Overlay & Contrast Tokens (Light Mode - Subtle white veil preserving image clarity) */
   --pmu-banner-overlay: linear-gradient(
     180deg,
-    rgba(250, 248, 244, 0.65) 0%,
-    rgba(250, 248, 244, 0.45) 40%,
-    rgba(250, 248, 244, 0.70) 100%
+    rgba(255, 255, 255, 0.46) 0%,
+    rgba(255, 255, 255, 0.26) 45%,
+    rgba(255, 255, 255, 0.48) 100%
   );
   --pmu-hero-overlay: linear-gradient(
     180deg,
-    rgba(250, 248, 244, 0.88) 0%,
-    rgba(250, 248, 244, 0.76) 45%,
-    rgba(250, 248, 244, 0.92) 100%
+    rgba(255, 255, 255, 0.50) 0%,
+    rgba(255, 255, 255, 0.28) 45%,
+    rgba(255, 255, 255, 0.52) 100%
   );
   --pmu-portal-overlay: linear-gradient(
     135deg,
-    rgba(250, 248, 244, 0.50) 0%,
-    rgba(244, 239, 234, 0.30) 50%,
-    rgba(250, 248, 244, 0.55) 100%
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(255, 255, 255, 0.16) 50%,
+    rgba(255, 255, 255, 0.36) 100%
   );
   --pmu-portal-banner-overlay: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.65) 0%,
-    rgba(250, 248, 244, 0.45) 100%
+    rgba(255, 255, 255, 0.62) 0%,
+    rgba(255, 255, 255, 0.38) 100%
   );
   --pmu-gradient-gold-text: linear-gradient(135deg, #8A6D3F 0%, #B89762 35%, #D6BC91 70%, #7E6133 100%);
-  --pmu-banner-title-color: #201E1D;
-  --pmu-banner-title-shadow: none;
-  --pmu-banner-desc-color: #4A443E;
-  --pmu-banner-desc-shadow: none;
-  --pmu-banner-eyebrow-color: #9F8356;
-  --pmu-banner-eyebrow-shadow: none;
+  --pmu-banner-title-color: #1a1817;
+  --pmu-banner-title-shadow: 0 1px 10px rgba(255, 255, 255, 0.85);
+  --pmu-banner-desc-color: #201E1D;
+  --pmu-banner-desc-shadow: 0 1px 8px rgba(255, 255, 255, 0.92);
+  --pmu-banner-eyebrow-color: #744e1e;
+  --pmu-banner-eyebrow-shadow: 0 1px 8px rgba(255, 255, 255, 0.95);
   --pmu-banner-glass-bg: rgba(255, 255, 255, 0.90);
   --pmu-banner-glass-border: rgba(214, 188, 145, 0.40);
 }

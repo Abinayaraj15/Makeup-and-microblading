@@ -9,9 +9,9 @@
   font-weight: 600;
   font-size: 0.92rem;
   letter-spacing: 0.04em;
-  padding: 0.82rem 1.85rem;
+  padding: 0.78rem 1.85rem;
   border-radius: var(--pmu-radius-full);
-  border: none;
+  border: 1.5px solid transparent;
   box-shadow: 0 4px 16px rgba(214, 188, 145, 0.35);
   display: inline-flex;
   align-items: center;
@@ -106,6 +106,11 @@
   height: 100%;
 }
 
+.pmu-card.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .pmu-card.text-center h5 {
   min-height: 1.8rem;
   margin-bottom: 0.5rem;
@@ -119,6 +124,51 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Aftercare Dedicated Clinical Specialists section: prevent card text clamping & button overflow */
+#aftercare-artists-team .section-eyebrow {
+  max-width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+#aftercare-artists-team .pmu-card.text-center p {
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: initial;
+  overflow: visible;
+  min-height: 0;
+}
+
+#aftercare-artists-team .btn-pmu-gold {
+  padding: 0.62rem 0.95rem;
+  font-size: 0.84rem;
+  line-height: 1.3;
+  white-space: normal !important;
+  text-align: center;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #aftercare-artists-team .btn-pmu-gold {
+    padding: 0.54rem 0.42rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.01em;
+    gap: 0.15rem;
+  }
+}
+
+/* Home Lifestyle Alignment cards: keep headings aligned in one straight line */
+#lifestyle-matcher h5 {
+  font-size: clamp(0.95rem, 1.3vw, 1.12rem);
+  line-height: 1.3;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #lifestyle-matcher h5 {
+    font-size: 0.91rem;
+    letter-spacing: -0.02em;
+  }
 }
 
 .pmu-card:hover {
@@ -463,12 +513,33 @@
 .pmu-badge {
   display: inline-flex;
   align-items: center;
+  width: fit-content;
+  max-width: 100%;
   gap: 0.35rem;
   padding: 0.35rem 0.85rem;
   border-radius: var(--pmu-radius-full);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+
+.pmu-card > .pmu-badge {
+  font-size: 0.68rem;
+  padding: 0.2rem 0.65rem;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+}
+
+.pmu-card.text-center > .pmu-badge,
+.pmu-card.text-center > .section-eyebrow {
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Home 2 Second Section (Facial Morphology Recommendation Card) */
+#brow-shapes-section .pmu-card {
+  align-items: center;
 }
 
 .pmu-badge-gold {
@@ -880,10 +951,10 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at 50% 48%,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(250, 248, 244, 0.18) 50%,
-    rgba(250, 248, 244, 0.04) 80%,
-    rgba(250, 248, 244, 0.0) 100%
+    rgba(255, 255, 255, 0.36) 0%,
+    rgba(255, 255, 255, 0.20) 50%,
+    rgba(255, 255, 255, 0.05) 80%,
+    rgba(255, 255, 255, 0.0) 100%
   );
   transition: background 0.35s ease;
 }
@@ -891,9 +962,9 @@
 [data-theme="dark"] .pmu-hero-home::before {
   background: radial-gradient(
     ellipse at 50% 48%,
-    rgba(32, 30, 29, 0.88) 0%,
-    rgba(32, 30, 29, 0.72) 50%,
-    rgba(32, 30, 29, 0.45) 100%
+    rgba(14, 15, 18, 0.62) 0%,
+    rgba(14, 15, 18, 0.44) 50%,
+    rgba(14, 15, 18, 0.22) 100%
   );
 }
 
@@ -915,10 +986,10 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at center,
-    rgba(250, 248, 244, 0.94) 0%,
-    rgba(250, 248, 244, 0.84) 48%,
-    rgba(250, 248, 244, 0.58) 78%,
-    rgba(250, 248, 244, 0.38) 100%
+    rgba(255, 255, 255, 0.52) 0%,
+    rgba(255, 255, 255, 0.34) 48%,
+    rgba(255, 255, 255, 0.14) 78%,
+    rgba(255, 255, 255, 0.04) 100%
   );
   transition: background 0.35s ease;
 }
@@ -926,10 +997,10 @@
 [data-theme="dark"] .pmu-hero-home-2::before {
   background: radial-gradient(
     ellipse at center,
-    rgba(32, 30, 29, 0.96) 0%,
-    rgba(32, 30, 29, 0.88) 48%,
-    rgba(32, 30, 29, 0.65) 78%,
-    rgba(32, 30, 29, 0.45) 100%
+    rgba(14, 15, 18, 0.64) 0%,
+    rgba(14, 15, 18, 0.46) 48%,
+    rgba(14, 15, 18, 0.24) 78%,
+    rgba(14, 15, 18, 0.08) 100%
   );
 }
 
@@ -940,20 +1011,20 @@
 [dir="rtl"] .pmu-hero-home-2::before {
   background: radial-gradient(
     ellipse at center,
-    rgba(250, 248, 244, 0.94) 0%,
-    rgba(250, 248, 244, 0.84) 48%,
-    rgba(250, 248, 244, 0.58) 78%,
-    rgba(250, 248, 244, 0.38) 100%
+    rgba(255, 255, 255, 0.52) 0%,
+    rgba(255, 255, 255, 0.34) 48%,
+    rgba(255, 255, 255, 0.14) 78%,
+    rgba(255, 255, 255, 0.04) 100%
   );
 }
 
 [dir="rtl"][data-theme="dark"] .pmu-hero-home-2::before {
   background: radial-gradient(
     ellipse at center,
-    rgba(32, 30, 29, 0.96) 0%,
-    rgba(32, 30, 29, 0.88) 48%,
-    rgba(32, 30, 29, 0.65) 78%,
-    rgba(32, 30, 29, 0.45) 100%
+    rgba(14, 15, 18, 0.64) 0%,
+    rgba(14, 15, 18, 0.46) 48%,
+    rgba(14, 15, 18, 0.24) 78%,
+    rgba(14, 15, 18, 0.08) 100%
   );
 }
 
@@ -1133,7 +1204,19 @@
   z-index: 1040;
 }
 
-.pmu-portal-auth-page > main,
+.pmu-portal-auth-page > main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pmu-portal-auth-page > main > .pmu-card {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .pmu-portal-auth-page > footer {
   position: relative;
   z-index: 1;
@@ -1225,9 +1308,9 @@
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(250, 248, 244, 0.88) 0%,
-    rgba(250, 248, 244, 0.78) 45%,
-    rgba(250, 248, 244, 0.92) 100%
+    rgba(255, 255, 255, 0.48) 0%,
+    rgba(255, 255, 255, 0.32) 45%,
+    rgba(255, 255, 255, 0.54) 100%
   );
   transition: background 0.35s ease;
 }
@@ -1235,9 +1318,9 @@
 [data-theme="dark"] .pmu-methodology-banner::before {
   background: linear-gradient(
     180deg,
-    rgba(14, 15, 18, 0.90) 0%,
-    rgba(14, 15, 18, 0.80) 45%,
-    rgba(14, 15, 18, 0.94) 100%
+    rgba(14, 15, 18, 0.56) 0%,
+    rgba(14, 15, 18, 0.38) 45%,
+    rgba(14, 15, 18, 0.60) 100%
   );
 }
 
@@ -1310,7 +1393,7 @@
 
 .pmu-step-title {
   font-family: var(--pmu-font-serif);
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 700;
   color: var(--pmu-banner-title-color) !important;
   margin-bottom: 0.75rem;
@@ -1322,10 +1405,20 @@
   line-height: 1.6;
   color: var(--pmu-banner-desc-color) !important;
   margin-bottom: 0;
-  margin-top: auto;
+  margin-top: 0;
   display: block !important;
   -webkit-line-clamp: unset !important;
   overflow: visible !important;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .pmu-step-card {
+    padding: 1.5rem 0.9rem;
+  }
+
+  .pmu-step-title {
+    font-size: 1rem;
+  }
 }
 
 
@@ -1353,10 +1446,10 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(255, 255, 255, 0.60) 0%,
-    rgba(250, 248, 244, 0.42) 42%,
-    rgba(250, 248, 244, 0.16) 72%,
-    rgba(250, 248, 244, 0.04) 95%
+    rgba(255, 255, 255, 0.44) 0%,
+    rgba(255, 255, 255, 0.28) 44%,
+    rgba(255, 255, 255, 0.08) 74%,
+    rgba(255, 255, 255, 0.0) 100%
   ) !important;
   transition: background 0.35s ease;
 }
@@ -1364,10 +1457,10 @@
 [data-theme="dark"] .pmu-hero-home::before {
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(32, 30, 29, 0.88) 0%,
-    rgba(32, 30, 29, 0.75) 45%,
-    rgba(32, 30, 29, 0.42) 75%,
-    rgba(32, 30, 29, 0.20) 100%
+    rgba(14, 15, 18, 0.56) 0%,
+    rgba(14, 15, 18, 0.38) 46%,
+    rgba(14, 15, 18, 0.18) 76%,
+    rgba(14, 15, 18, 0.04) 100%
   ) !important;
 }
 
@@ -1498,11 +1591,12 @@
   font-weight: 500 !important;
   font-size: 1.15rem !important;
   line-height: 1.65 !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.94), 0 0 12px rgba(250, 248, 244, 0.82) !important;
 }
 
 [data-theme="dark"] .pmu-hero-home p.lead {
-  color: rgba(250, 248, 244, 0.88) !important;
+  color: rgba(250, 248, 244, 0.92) !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.72) !important;
 }
 
 .pmu-hero-home .btn-pmu-gold {
@@ -1641,17 +1735,17 @@
   .pmu-hero-home::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(255, 255, 255, 0.72) 0%,
-      rgba(250, 248, 244, 0.52) 48%,
-      rgba(250, 248, 244, 0.22) 100%
+      rgba(255, 255, 255, 0.54) 0%,
+      rgba(255, 255, 255, 0.36) 50%,
+      rgba(255, 255, 255, 0.14) 100%
     ) !important;
   }
   [data-theme="dark"] .pmu-hero-home::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(32, 30, 29, 0.92) 0%,
-      rgba(32, 30, 29, 0.80) 50%,
-      rgba(32, 30, 29, 0.45) 100%
+      rgba(14, 15, 18, 0.60) 0%,
+      rgba(14, 15, 18, 0.42) 52%,
+      rgba(14, 15, 18, 0.22) 100%
     ) !important;
   }
   .pmu-hero-home h1 {
@@ -1729,10 +1823,10 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at 50% 48%,
-    rgba(255, 255, 255, 0.62) 0%,
-    rgba(250, 248, 244, 0.42) 38%,
-    rgba(250, 248, 244, 0.12) 65%,
-    rgba(250, 248, 244, 0.0) 85%
+    rgba(255, 255, 255, 0.54) 0%,
+    rgba(255, 255, 255, 0.34) 42%,
+    rgba(255, 255, 255, 0.12) 70%,
+    rgba(255, 255, 255, 0.0) 92%
   ) !important;
   transition: background 0.35s ease;
 }
@@ -1740,64 +1834,88 @@
 [data-theme="dark"] .pmu-hero-home-2::before {
   background: radial-gradient(
     ellipse at 50% 48%,
-    rgba(32, 30, 29, 0.90) 0%,
-    rgba(32, 30, 29, 0.75) 45%,
-    rgba(32, 30, 29, 0.35) 75%,
-    rgba(32, 30, 29, 0.10) 100%
+    rgba(14, 15, 18, 0.60) 0%,
+    rgba(14, 15, 18, 0.42) 48%,
+    rgba(14, 15, 18, 0.20) 78%,
+    rgba(14, 15, 18, 0.04) 100%
   ) !important;
 }
 
 .pmu-hero-home-2 .section-eyebrow {
-  color: #bfa074 !important;
+  color: #7a5423 !important;
   letter-spacing: 0.18em !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
   font-size: 0.82rem !important;
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.75rem !important;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.92) !important;
+}
+
+[data-theme="dark"] .pmu-hero-home-2 .section-eyebrow {
+  color: #dec59a !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 .pmu-hero-home-2 .section-eyebrow::before,
 .pmu-hero-home-2 .section-eyebrow::after {
   content: "" !important;
   display: inline-block !important;
-  background-color: #bfa074 !important;
+  background-color: #8c642c !important;
   width: 28px !important;
-  height: 1px !important;
+  height: 1.5px !important;
+}
+
+[data-theme="dark"] .pmu-hero-home-2 .section-eyebrow::before,
+[data-theme="dark"] .pmu-hero-home-2 .section-eyebrow::after {
+  background-color: #dec59a !important;
 }
 
 .pmu-hero-home-2 h1 {
   font-family: 'Playfair Display', serif !important;
-  color: #201E1D !important;
+  color: #1a1817 !important;
   font-weight: 700 !important;
   font-size: clamp(2.1rem, 3.4vw, 3.35rem) !important;
   line-height: 1.18 !important;
   letter-spacing: -0.01em !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.9) !important;
 }
 
 [data-theme="dark"] .pmu-hero-home-2 h1 {
   color: #FAF8F4 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.72) !important;
 }
 
 .pmu-hero-home-2 h1 .text-gold-gradient {
-  background: linear-gradient(135deg, #a8844f 0%, #caa875 40%, #b89360 70%, #9e7943 100%) !important;
+  background: linear-gradient(135deg, #744e1e 0%, #94692e 38%, #b38848 68%, #6a4618 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   display: inline-block !important;
   white-space: nowrap !important;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.92)) !important;
+}
+
+[data-theme="dark"] .pmu-hero-home-2 h1 .text-gold-gradient {
+  background: linear-gradient(135deg, #f0dcbe 0%, #d6bc91 40%, #dec59a 70%, #caa875 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.72)) !important;
 }
 
 .pmu-hero-home-2 p.lead {
-  color: #4a4744 !important;
-  font-weight: 400 !important;
+  color: #201E1D !important;
+  font-weight: 500 !important;
   font-size: 1.1rem !important;
   line-height: 1.65 !important;
   max-width: 680px !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95), 0 0 14px rgba(250, 248, 244, 0.85) !important;
 }
 
 [data-theme="dark"] .pmu-hero-home-2 p.lead {
-  color: rgba(250, 248, 244, 0.88) !important;
+  color: rgba(250, 248, 244, 0.92) !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75) !important;
 }
 
 .pmu-hero-home-2 .pmu-hero-features-grid {
@@ -1805,17 +1923,23 @@
 }
 
 .pmu-hero-home-2 .pmu-hero-features-grid .fa-circle-check {
-  color: #c4a275 !important;
+  color: #8c642c !important;
+}
+
+[data-theme="dark"] .pmu-hero-home-2 .pmu-hero-features-grid .fa-circle-check {
+  color: #dec59a !important;
 }
 
 .pmu-hero-home-2 .pmu-hero-features-grid span {
-  color: #201E1D !important;
+  color: #1a1817 !important;
   font-size: 0.92rem !important;
   font-weight: 600 !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95) !important;
 }
 
 [data-theme="dark"] .pmu-hero-home-2 .pmu-hero-features-grid span {
   color: #FAF8F4 !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8) !important;
 }
 
 .pmu-hero-home-2 .btn-pmu-gold {
@@ -1889,19 +2013,19 @@
   .pmu-hero-home-2::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(255, 255, 255, 0.88) 0%,
-      rgba(250, 248, 244, 0.78) 50%,
-      rgba(250, 248, 244, 0.55) 85%,
-      rgba(250, 248, 244, 0.35) 100%
+      rgba(255, 255, 255, 0.56) 0%,
+      rgba(255, 255, 255, 0.38) 50%,
+      rgba(255, 255, 255, 0.18) 85%,
+      rgba(255, 255, 255, 0.08) 100%
     ) !important;
   }
   [data-theme="dark"] .pmu-hero-home::before,
   [data-theme="dark"] .pmu-hero-home-2::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(32, 30, 29, 0.95) 0%,
-      rgba(32, 30, 29, 0.88) 50%,
-      rgba(32, 30, 29, 0.65) 100%
+      rgba(14, 15, 18, 0.60) 0%,
+      rgba(14, 15, 18, 0.42) 52%,
+      rgba(14, 15, 18, 0.22) 100%
     ) !important;
   }
   .pmu-hero-home h1,
@@ -1961,10 +2085,10 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(255, 255, 255, 0.58) 0%,
-    rgba(250, 248, 244, 0.38) 45%,
-    rgba(250, 248, 244, 0.15) 75%,
-    rgba(250, 248, 244, 0.05) 100%
+    rgba(255, 255, 255, 0.54) 0%,
+    rgba(255, 255, 255, 0.34) 45%,
+    rgba(255, 255, 255, 0.12) 75%,
+    rgba(255, 255, 255, 0.02) 100%
   ) !important;
   transition: background 0.35s ease;
 }
@@ -1972,10 +2096,10 @@
 [data-theme="dark"] .pmu-banner-about::before {
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(32, 30, 29, 0.82) 0%,
-    rgba(32, 30, 29, 0.68) 48%,
-    rgba(32, 30, 29, 0.35) 80%,
-    rgba(32, 30, 29, 0.15) 100%
+    rgba(14, 15, 18, 0.62) 0%,
+    rgba(14, 15, 18, 0.44) 48%,
+    rgba(14, 15, 18, 0.22) 80%,
+    rgba(14, 15, 18, 0.06) 100%
   ) !important;
 }
 
@@ -2014,10 +2138,12 @@
   color: #201E1D !important;
   font-weight: 700 !important;
   letter-spacing: -0.01em !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.78) !important;
 }
 
 [data-theme="dark"] .pmu-banner-about h1 {
   color: #FAF8F4 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.68) !important;
 }
 
 .pmu-banner-about h1 .text-gold-gradient {
@@ -2026,7 +2152,7 @@
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   display: inline-block !important;
-  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.9)) !important;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.92)) !important;
   font-weight: 800 !important;
 }
 
@@ -2035,7 +2161,7 @@
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)) !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.72)) !important;
 }
 
 .pmu-banner-about p.lead {
@@ -2043,11 +2169,12 @@
   font-weight: 500 !important;
   font-size: 1.15rem !important;
   line-height: 1.65 !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95), 0 0 12px rgba(250, 248, 244, 0.85) !important;
 }
 
 [data-theme="dark"] .pmu-banner-about p.lead {
-  color: rgba(250, 248, 244, 0.88) !important;
+  color: rgba(250, 248, 244, 0.92) !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.72) !important;
 }
 
 .pmu-banner-about .pmu-card {
@@ -2134,17 +2261,17 @@
   .pmu-banner-about::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(255, 255, 255, 0.65) 0%,
-      rgba(250, 248, 244, 0.45) 50%,
-      rgba(250, 248, 244, 0.20) 100%
+      rgba(255, 255, 255, 0.52) 0%,
+      rgba(255, 255, 255, 0.34) 50%,
+      rgba(255, 255, 255, 0.14) 100%
     ) !important;
   }
   [data-theme="dark"] .pmu-banner-about::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(32, 30, 29, 0.90) 0%,
-      rgba(32, 30, 29, 0.75) 50%,
-      rgba(32, 30, 29, 0.45) 100%
+      rgba(14, 15, 18, 0.62) 0%,
+      rgba(14, 15, 18, 0.44) 50%,
+      rgba(14, 15, 18, 0.22) 100%
     ) !important;
   }
   .pmu-banner-about h1 {
@@ -2183,10 +2310,10 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at 50% 48%,
-    rgba(255, 255, 255, 0.82) 0%,
-    rgba(250, 248, 244, 0.65) 45%,
-    rgba(250, 248, 244, 0.28) 75%,
-    rgba(250, 248, 244, 0.08) 100%
+    rgba(255, 255, 255, 0.50) 0%,
+    rgba(255, 255, 255, 0.32) 45%,
+    rgba(255, 255, 255, 0.12) 75%,
+    rgba(255, 255, 255, 0.02) 100%
   ) !important;
   transition: background 0.35s ease;
 }
@@ -2194,10 +2321,10 @@
 [data-theme="dark"] .pmu-banner-services::before {
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(32, 30, 29, 0.88) 0%,
-    rgba(32, 30, 29, 0.74) 48%,
-    rgba(32, 30, 29, 0.42) 80%,
-    rgba(32, 30, 29, 0.20) 100%
+    rgba(14, 15, 18, 0.60) 0%,
+    rgba(14, 15, 18, 0.42) 48%,
+    rgba(14, 15, 18, 0.20) 80%,
+    rgba(14, 15, 18, 0.06) 100%
   ) !important;
 }
 
@@ -2367,17 +2494,17 @@
   .pmu-banner-services::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(255, 255, 255, 0.68) 0%,
-      rgba(250, 248, 244, 0.48) 50%,
-      rgba(250, 248, 244, 0.22) 100%
+      rgba(255, 255, 255, 0.54) 0%,
+      rgba(255, 255, 255, 0.36) 50%,
+      rgba(255, 255, 255, 0.14) 100%
     ) !important;
   }
   [data-theme="dark"] .pmu-banner-services::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(32, 30, 29, 0.90) 0%,
-      rgba(32, 30, 29, 0.75) 50%,
-      rgba(32, 30, 29, 0.45) 100%
+      rgba(14, 15, 18, 0.64) 0%,
+      rgba(14, 15, 18, 0.46) 50%,
+      rgba(14, 15, 18, 0.24) 100%
     ) !important;
   }
   .pmu-banner-services h1 {
@@ -2416,10 +2543,10 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at 50% 48%,
-    rgba(255, 255, 255, 0.82) 0%,
-    rgba(250, 248, 244, 0.65) 45%,
-    rgba(250, 248, 244, 0.28) 75%,
-    rgba(250, 248, 244, 0.08) 100%
+    rgba(255, 255, 255, 0.50) 0%,
+    rgba(255, 255, 255, 0.32) 45%,
+    rgba(255, 255, 255, 0.12) 75%,
+    rgba(255, 255, 255, 0.02) 100%
   ) !important;
   transition: background 0.35s ease;
 }
@@ -2427,10 +2554,10 @@
 [data-theme="dark"] .pmu-banner-artists::before {
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(32, 30, 29, 0.85) 0%,
-    rgba(32, 30, 29, 0.70) 48%,
-    rgba(32, 30, 29, 0.38) 80%,
-    rgba(32, 30, 29, 0.18) 100%
+    rgba(14, 15, 18, 0.60) 0%,
+    rgba(14, 15, 18, 0.42) 48%,
+    rgba(14, 15, 18, 0.20) 80%,
+    rgba(14, 15, 18, 0.06) 100%
   ) !important;
 }
 
@@ -2469,10 +2596,12 @@
   color: #201E1D !important;
   font-weight: 700 !important;
   letter-spacing: -0.01em !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.78) !important;
 }
 
 [data-theme="dark"] .pmu-banner-artists h1 {
   color: #FAF8F4 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.68) !important;
 }
 
 .pmu-banner-artists h1 .text-gold-gradient {
@@ -2481,7 +2610,7 @@
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   display: inline-block !important;
-  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.9)) !important;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.92)) !important;
   font-weight: 800 !important;
 }
 
@@ -2490,7 +2619,7 @@
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)) !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.72)) !important;
 }
 
 .pmu-banner-artists p.lead {
@@ -2498,11 +2627,12 @@
   font-weight: 500 !important;
   font-size: 1.15rem !important;
   line-height: 1.65 !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95), 0 0 12px rgba(250, 248, 244, 0.85) !important;
 }
 
 [data-theme="dark"] .pmu-banner-artists p.lead {
-  color: rgba(250, 248, 244, 0.88) !important;
+  color: rgba(250, 248, 244, 0.92) !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.72) !important;
 }
 
 .pmu-banner-artists .pmu-card {
@@ -2589,17 +2719,17 @@
   .pmu-banner-artists::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(255, 255, 255, 0.68) 0%,
-      rgba(250, 248, 244, 0.48) 50%,
-      rgba(250, 248, 244, 0.22) 100%
+      rgba(255, 255, 255, 0.54) 0%,
+      rgba(255, 255, 255, 0.36) 50%,
+      rgba(255, 255, 255, 0.14) 100%
     ) !important;
   }
   [data-theme="dark"] .pmu-banner-artists::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(32, 30, 29, 0.90) 0%,
-      rgba(32, 30, 29, 0.75) 50%,
-      rgba(32, 30, 29, 0.45) 100%
+      rgba(14, 15, 18, 0.64) 0%,
+      rgba(14, 15, 18, 0.46) 50%,
+      rgba(14, 15, 18, 0.24) 100%
     ) !important;
   }
   .pmu-banner-artists h1 {
@@ -2638,10 +2768,10 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at 50% 48%,
-    rgba(255, 255, 255, 0.82) 0%,
-    rgba(250, 248, 244, 0.65) 45%,
-    rgba(250, 248, 244, 0.28) 75%,
-    rgba(250, 248, 244, 0.08) 100%
+    rgba(255, 255, 255, 0.50) 0%,
+    rgba(255, 255, 255, 0.32) 45%,
+    rgba(255, 255, 255, 0.12) 75%,
+    rgba(255, 255, 255, 0.02) 100%
   ) !important;
   transition: background 0.35s ease;
 }
@@ -2649,10 +2779,10 @@
 [data-theme="dark"] .pmu-banner-aftercare::before {
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(32, 30, 29, 0.85) 0%,
-    rgba(32, 30, 29, 0.70) 48%,
-    rgba(32, 30, 29, 0.38) 80%,
-    rgba(32, 30, 29, 0.18) 100%
+    rgba(14, 15, 18, 0.60) 0%,
+    rgba(14, 15, 18, 0.42) 48%,
+    rgba(14, 15, 18, 0.20) 80%,
+    rgba(14, 15, 18, 0.06) 100%
   ) !important;
 }
 
@@ -2691,10 +2821,12 @@
   color: #201E1D !important;
   font-weight: 700 !important;
   letter-spacing: -0.01em !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.78) !important;
 }
 
 [data-theme="dark"] .pmu-banner-aftercare h1 {
   color: #FAF8F4 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.68) !important;
 }
 
 .pmu-banner-aftercare h1 .text-gold-gradient {
@@ -2703,7 +2835,7 @@
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   display: inline-block !important;
-  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.9)) !important;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.92)) !important;
   font-weight: 800 !important;
 }
 
@@ -2712,7 +2844,7 @@
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)) !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.72)) !important;
 }
 
 .pmu-banner-aftercare p.lead {
@@ -2720,11 +2852,12 @@
   font-weight: 500 !important;
   font-size: 1.15rem !important;
   line-height: 1.65 !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95), 0 0 12px rgba(250, 248, 244, 0.85) !important;
 }
 
 [data-theme="dark"] .pmu-banner-aftercare p.lead {
-  color: rgba(250, 248, 244, 0.88) !important;
+  color: rgba(250, 248, 244, 0.92) !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.72) !important;
 }
 
 .pmu-banner-aftercare .pmu-card {
@@ -2811,17 +2944,17 @@
   .pmu-banner-aftercare::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(255, 255, 255, 0.68) 0%,
-      rgba(250, 248, 244, 0.48) 50%,
-      rgba(250, 248, 244, 0.22) 100%
+      rgba(255, 255, 255, 0.54) 0%,
+      rgba(255, 255, 255, 0.36) 50%,
+      rgba(255, 255, 255, 0.14) 100%
     ) !important;
   }
   [data-theme="dark"] .pmu-banner-aftercare::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(32, 30, 29, 0.90) 0%,
-      rgba(32, 30, 29, 0.75) 50%,
-      rgba(32, 30, 29, 0.45) 100%
+      rgba(14, 15, 18, 0.64) 0%,
+      rgba(14, 15, 18, 0.46) 50%,
+      rgba(14, 15, 18, 0.24) 100%
     ) !important;
   }
   .pmu-banner-aftercare h1 {
@@ -2862,10 +2995,10 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at 50% 48%,
-    rgba(255, 255, 255, 0.82) 0%,
-    rgba(250, 248, 244, 0.65) 45%,
-    rgba(250, 248, 244, 0.28) 75%,
-    rgba(250, 248, 244, 0.08) 100%
+    rgba(255, 255, 255, 0.50) 0%,
+    rgba(255, 255, 255, 0.32) 45%,
+    rgba(255, 255, 255, 0.12) 75%,
+    rgba(255, 255, 255, 0.02) 100%
   ) !important;
   transition: background 0.35s ease;
 }
@@ -2873,10 +3006,10 @@
 [data-theme="dark"] .pmu-banner-contact::before {
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(32, 30, 29, 0.85) 0%,
-    rgba(32, 30, 29, 0.70) 48%,
-    rgba(32, 30, 29, 0.38) 80%,
-    rgba(32, 30, 29, 0.18) 100%
+    rgba(14, 15, 18, 0.60) 0%,
+    rgba(14, 15, 18, 0.42) 48%,
+    rgba(14, 15, 18, 0.20) 80%,
+    rgba(14, 15, 18, 0.06) 100%
   ) !important;
 }
 
@@ -2915,10 +3048,12 @@
   color: #201E1D !important;
   font-weight: 700 !important;
   letter-spacing: -0.01em !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.78) !important;
 }
 
 [data-theme="dark"] .pmu-banner-contact h1 {
   color: #FAF8F4 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.68) !important;
 }
 
 .pmu-banner-contact h1 .text-gold-gradient {
@@ -2927,7 +3062,7 @@
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   display: inline-block !important;
-  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.9)) !important;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.92)) !important;
   font-weight: 800 !important;
 }
 
@@ -2936,7 +3071,7 @@
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)) !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.72)) !important;
 }
 
 .pmu-banner-contact p.lead {
@@ -2944,11 +3079,12 @@
   font-weight: 500 !important;
   font-size: 1.15rem !important;
   line-height: 1.65 !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95), 0 0 12px rgba(250, 248, 244, 0.85) !important;
 }
 
 [data-theme="dark"] .pmu-banner-contact p.lead {
-  color: rgba(250, 248, 244, 0.88) !important;
+  color: rgba(250, 248, 244, 0.92) !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.72) !important;
 }
 
 .pmu-banner-contact .pmu-card {
@@ -3049,17 +3185,17 @@
   .pmu-banner-contact::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(255, 255, 255, 0.68) 0%,
-      rgba(250, 248, 244, 0.48) 50%,
-      rgba(250, 248, 244, 0.22) 100%
+      rgba(255, 255, 255, 0.54) 0%,
+      rgba(255, 255, 255, 0.36) 50%,
+      rgba(255, 255, 255, 0.14) 100%
     ) !important;
   }
   [data-theme="dark"] .pmu-banner-contact::before {
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(32, 30, 29, 0.90) 0%,
-      rgba(32, 30, 29, 0.75) 50%,
-      rgba(32, 30, 29, 0.45) 100%
+      rgba(14, 15, 18, 0.64) 0%,
+      rgba(14, 15, 18, 0.46) 50%,
+      rgba(14, 15, 18, 0.24) 100%
     ) !important;
   }
   .pmu-banner-contact h1 {
@@ -3253,12 +3389,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: linear-gradient(180deg, rgba(250, 248, 244, 0.94) 0%, rgba(250, 248, 244, 0.86) 45%, rgba(250, 248, 244, 0.97) 100%);
-  backdrop-filter: blur(2px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.30) 48%, rgba(255, 255, 255, 0.56) 100%);
 }
 
 [data-theme="dark"] .booking-brand-panel-overlay {
-  background: linear-gradient(180deg, rgba(26, 24, 23, 0.95) 0%, rgba(26, 24, 23, 0.88) 45%, rgba(26, 24, 23, 0.98) 100%);
+  background: linear-gradient(180deg, rgba(14, 15, 18, 0.56) 0%, rgba(14, 15, 18, 0.36) 48%, rgba(14, 15, 18, 0.62) 100%);
+}
+
+[data-theme="dark"] .booking-brand-panel-overlay p:not(.brand-highlight-card p) {
+  color: rgba(245, 246, 248, 0.88) !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
 }
 
 .booking-brand-badge {

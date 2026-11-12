@@ -42,8 +42,19 @@
 
 /* Header & Navigation Mirroring */
 [dir="rtl"] .navbar-nav .nav-link::after {
-  left: 0.72rem;
-  right: 0.72rem;
+  inset-inline: 0.58rem;
+}
+
+@media (min-width: 992px) and (max-width: 1320px) {
+  [dir="rtl"] .navbar-nav .nav-link::after {
+    inset-inline: 0.4rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1140px) {
+  [dir="rtl"] .navbar-nav .nav-link::after {
+    inset-inline: 0.36rem;
+  }
 }
 
 [dir="rtl"] .dropdown-menu {
@@ -87,6 +98,16 @@
 [dir="rtl"] .input-icon-group .form-control {
   padding-left: 1.15rem;
   padding-right: 2.85rem;
+}
+
+[dir="rtl"] .form-select {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  background-position: left 0.85rem center;
+}
+
+[dir="rtl"] .form-select.form-select-sm {
+  padding: 0.42rem 0.75rem 0.42rem 2.25rem;
+  background-position: left 0.75rem center;
 }
 
 /* Dashboard Sidebar RTL */
@@ -133,10 +154,10 @@
 [dir="rtl"] .pmu-hero-home-3::before {
   background: linear-gradient(
     270deg,
-    rgba(251, 249, 246, 0.88) 0%,
-    rgba(251, 249, 246, 0.78) 42%,
-    rgba(251, 249, 246, 0.35) 75%,
-    rgba(251, 249, 246, 0.20) 100%
+    rgba(255, 255, 255, 0.50) 0%,
+    rgba(255, 255, 255, 0.32) 44%,
+    rgba(255, 255, 255, 0.12) 76%,
+    rgba(255, 255, 255, 0.02) 100%
   );
 }
 
@@ -145,10 +166,10 @@
 [dir="rtl"][data-theme="dark"] .pmu-hero-home-3::before {
   background: linear-gradient(
     270deg,
-    rgba(14, 15, 18, 0.90) 0%,
-    rgba(14, 15, 18, 0.80) 42%,
-    rgba(14, 15, 18, 0.42) 75%,
-    rgba(14, 15, 18, 0.22) 100%
+    rgba(14, 15, 18, 0.60) 0%,
+    rgba(14, 15, 18, 0.42) 44%,
+    rgba(14, 15, 18, 0.20) 76%,
+    rgba(14, 15, 18, 0.06) 100%
   );
 }
 
